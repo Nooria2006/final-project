@@ -1,0 +1,49 @@
+.categories-page {
+  padding: 30px;
+}
+
+.categories-page h1 {
+  color: #39446d;
+  margin-bottom: 10px;
+}
+
+.categories-subtitle {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.category-card h2 {
+  color: #39446d;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.category-card button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #39446d;
+  color: white;
+  cursor: pointer;
+}
+
+.category-card button:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,292 @@
+/* =========================
+   BOOK PAGE
+========================= */
+
+.book-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #f5f6fa;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.book-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #252a3a;
+}
+
+.book-header p {
+  margin-top: 7px;
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* =========================
+   HEADER ACTIONS
+========================= */
+
+.book-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #777;
+}
+
+.book-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.book-search input {
+  border: none;
+  outline: none;
+  width: 220px;
+}
+
+
+/* =========================
+   BOOK SECTION
+========================= */
+
+.book-section {
+  margin-bottom: 35px;
+}
+
+.book-section h3,
+.book-table-section h3 {
+  color: #252a3a;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   BOOK GRID
+========================= */
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.book-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.book-image {
+  width: 100%;
+  height: 190px;
+}
+
+.book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-card-content {
+  padding: 16px;
+}
+
+.book-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.book-title-row h4 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.book-category {
+  font-size: 11px;
+  background: #eee9ff;
+  color: #6941c6;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+.book-author {
+  color: #777;
+  font-size: 13px;
+}
+
+.book-description {
+  color: #888;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.view-book-btn {
+  width: 100%;
+  border: none;
+  background: #6941c6;
+  color: white;
+  padding: 9px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.view-book-btn:hover {
+  background: #5732a3;
+}
+
+
+/* =========================
+   TABLE SECTION
+========================= */
+
+.book-table-section {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.table-controls select,
+.table-controls input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 7px 10px;
+  outline: none;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f7f7f9;
+}
+
+th {
+  text-align: left;
+  padding: 13px;
+  font-size: 12px;
+  color: #777;
+}
+
+td {
+  padding: 13px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #666;
+}
+
+.table-book {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #333;
+  font-weight: 500;
+}
+
+.table-book img {
+  width: 40px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+  padding: 5px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.available {
+  background: #e7f8ee;
+  color: #198754;
+}
+
+.borrowed {
+  background: #fff0f0;
+  color: #dc3545;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+
+  .book-page {
+    padding: 20px;
+  }
+
+  .book-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .book-header-actions {
+    width: 100%;
+  }
+
+  .book-search {
+    width: 100%;
+  }
+
+  .book-search input {
+    width: 100%;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,35 @@
+.book-card {
+  width: 200px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.book-card img {
+  width: 120px;
+  height: 170px;
+  object-fit: cover;
+}
+
+.book-card h3 {
+  margin: 10px 0;
+}
+
+.book-card button {
+  padding: 8px 15px;
+  cursor: pointer;
+}
+.books-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.book-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}

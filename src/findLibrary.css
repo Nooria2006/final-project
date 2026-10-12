@@ -1,0 +1,45 @@
+.find-library {
+  padding: 30px;
+}
+
+.find-library h1 {
+  color: #39446d;
+  margin-bottom: 10px;
+}
+
+.find-library > p {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.library-card {
+  background: white;
+  width: 420px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.library-card h2 {
+  color: #39446d;
+  margin-bottom: 15px;
+}
+
+.library-card p {
+  color: #555;
+  margin: 10px 0;
+}
+
+.library-card button {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #39446d;
+  color: white;
+  cursor: pointer;
+}
+
+.library-card button:hover {
+  opacity: 0.9;
+}

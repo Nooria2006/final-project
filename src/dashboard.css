@@ -1,0 +1,642 @@
+/* =========================
+   MAIN DASHBOARD
+========================= */
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #f5f6fa;
+
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.dashboard-header {
+  width: 100%;
+  min-height: 80px;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 30px;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER LEFT
+========================= */
+
+.header-left {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 0;
+}
+
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-button {
+  border: none;
+
+  background: transparent;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  padding: 5px 8px;
+
+  flex-shrink: 0;
+}
+
+.menu-button:hover {
+  opacity: 0.7;
+}
+
+
+/* =========================
+   HEADER TEXT
+========================= */
+
+.header-left small {
+  color: #777;
+}
+
+.header-left h3 {
+  margin: 5px 0 0;
+}
+
+
+/* =========================
+   HEADER RIGHT
+========================= */
+
+.header-right {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  background: #f5f6fa;
+
+  padding: 10px 15px;
+
+  border-radius: 8px;
+}
+
+.search input {
+  width: 220px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+}
+
+
+/* =========================
+   ACCOUNT
+========================= */
+
+.account {
+  border: none;
+
+  background: transparent;
+
+  color: #333;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  padding: 5px;
+}
+
+.account:hover {
+  opacity: 0.7;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  padding: 30px;
+
+  box-sizing: border-box;
+}
+
+.content > h1 {
+  margin: 0 0 30px;
+
+  color: #303030;
+}
+
+
+/* =========================
+   FIND SECTION
+========================= */
+
+.find-section {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 12px;
+
+  margin-bottom: 30px;
+
+  box-sizing: border-box;
+}
+
+.find-section h2 {
+  margin: 0 0 8px;
+}
+
+.find-section p {
+  color: #777;
+
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   FIND BOX
+========================= */
+
+.find-box {
+  display: flex;
+
+  gap: 10px;
+}
+
+.find-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 12px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 7px;
+
+  outline: none;
+}
+
+.find-box button {
+  padding: 12px 20px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #39446d;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 12px;
+
+  border: 1px solid #e8e8e8;
+
+  box-sizing: border-box;
+
+  min-width: 0;
+}
+
+.card h3 {
+  margin: 0 0 25px;
+}
+
+
+/* =========================
+   LIST
+========================= */
+
+.list p,
+.book-list p {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 15px 0;
+
+  color: #555;
+}
+
+.list span,
+.book-list span {
+  font-weight: bold;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   DONUT CHART
+========================= */
+
+.chart-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+}
+
+.donut {
+  width: 140px;
+  height: 140px;
+
+  min-width: 140px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.donut1 {
+  background: conic-gradient(
+    #39446d 35%,
+    #6976a5 35% 55%,
+    #9ca5c7 55% 70%,
+    #c5cadc 70% 88%,
+    #e3e5ed 88%
+  );
+}
+
+.donut2 {
+  background: conic-gradient(
+    #39446d 45%,
+    #6976a5 45% 70%,
+    #9ca5c7 70% 85%,
+    #e3e5ed 85%
+  );
+}
+
+.donut div {
+  width: 80px;
+  height: 80px;
+
+  background: white;
+
+  border-radius: 50%;
+}
+
+
+/* =========================
+   CARD BUTTON
+========================= */
+
+.card > button {
+  margin-top: 20px;
+
+  padding: 10px 15px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #39446d;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   READING
+========================= */
+
+.reading h2 {
+  font-size: 35px;
+
+  margin: 0 0 5px;
+}
+
+.reading h2 span {
+  font-size: 14px;
+
+  color: green;
+
+  margin-left: 10px;
+}
+
+.subtitle {
+  color: #777;
+}
+
+
+/* =========================
+   LINE CHART
+========================= */
+
+.line-chart {
+  margin-top: 20px;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.line-chart svg {
+  width: 100%;
+
+  height: 180px;
+
+  display: block;
+}
+
+
+/* =========================
+   BOOKS
+========================= */
+
+.books-section {
+  margin-top: 35px;
+}
+
+.books-section h2 {
+  margin-bottom: 20px;
+}
+
+.books {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.book {
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  box-sizing: border-box;
+
+  min-width: 0;
+}
+
+.cover {
+  width: 100%;
+
+  height: 130px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 60px;
+
+  margin-bottom: 20px;
+}
+
+.book h3 {
+  margin: 0 0 10px;
+
+  line-height: 1.4;
+}
+
+.book p {
+  margin: 0;
+
+  color: #777;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  margin-top: 40px;
+
+  padding: 25px 30px;
+
+  background: white;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  color: #777;
+
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #777;
+
+  text-decoration: none;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .search input {
+    width: 150px;
+  }
+
+  .chart-row {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .books {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+  .main {
+    width: 100%;
+  }
+
+  .dashboard-header {
+    padding: 15px 20px;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .account {
+    font-size: 13px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .books {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+  .dashboard-header {
+    align-items: flex-start;
+  }
+
+  .header-left h3 {
+    font-size: 16px;
+  }
+
+  .header-left small {
+    font-size: 11px;
+  }
+
+  .account {
+    display: none;
+  }
+
+  .content > h1 {
+    font-size: 24px;
+  }
+
+  .find-box {
+    flex-direction: column;
+  }
+
+  .find-box button {
+    width: 100%;
+  }
+
+  .chart-row {
+    align-items: center;
+  }
+
+  .list {
+    width: 100%;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+}

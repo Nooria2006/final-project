@@ -1,0 +1,45 @@
+.borrowed-books {
+  padding: 30px;
+}
+
+.borrowed-books h1 {
+  color: #39446d;
+  margin-bottom: 10px;
+}
+
+.borrowed-books > p {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.borrowed-book-card {
+  background: white;
+  width: 400px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.borrowed-book-card h2 {
+  color: #39446d;
+  margin-bottom: 10px;
+}
+
+.borrowed-book-card p {
+  color: #555;
+  margin: 8px 0;
+}
+
+.borrowed-book-card button {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #39446d;
+  color: white;
+  cursor: pointer;
+}
+
+.borrowed-book-card button:hover {
+  opacity: 0.9;
+}

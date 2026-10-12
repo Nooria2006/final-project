@@ -1,0 +1,59 @@
+/* =========================
+   APP
+========================= */
+
+.app {
+  display: flex;
+
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.app-content {
+  flex: 1;
+
+  width: auto;
+  min-width: 0;
+  min-height: 100vh;
+
+  margin-left: 0;
+
+  box-sizing: border-box;
+
+  transition: 0.3s ease;
+}
+
+
+/* =========================
+   SIDEBAR CLOSED
+========================= */
+
+.app-content.sidebar-is-closed {
+  width: auto;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+  .app {
+    display: block;
+  }
+
+  .app-content,
+  .app-content.sidebar-is-closed {
+    width: 100%;
+    margin-left: 0;
+  }
+}

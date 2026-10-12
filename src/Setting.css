@@ -1,0 +1,140 @@
+.settings-page {
+  padding: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: 30px;
+}
+
+.settings-header h1 {
+  color: #39446d;
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
+.settings-header p {
+  color: #777;
+  font-size: 15px;
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.settings-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.settings-icon {
+  width: 48px;
+  height: 48px;
+  background: #eef0f8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.settings-card-header h2 {
+  color: #39446d;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.settings-card-header p {
+  color: #888;
+  font-size: 14px;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #444;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #39446d;
+}
+
+.save-button {
+  width: fit-content;
+  padding: 11px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #39446d;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  opacity: 0.9;
+}
+
+.setting-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.setting-option:last-child {
+  border-bottom: none;
+}
+
+.setting-option h3 {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.setting-option p {
+  color: #888;
+  font-size: 13px;
+}
+
+.setting-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

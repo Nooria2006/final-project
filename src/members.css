@@ -1,0 +1,54 @@
+.members-page {
+  padding: 30px;
+}
+
+.members-page h1 {
+  color: #39446d;
+  margin-bottom: 10px;
+}
+
+.members-subtitle {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.members-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.members-header,
+.member-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr 1fr 0.8fr;
+  gap: 20px;
+  padding: 18px 20px;
+  align-items: center;
+}
+
+.members-header {
+  background: #39446d;
+  color: white;
+  font-weight: bold;
+}
+
+.member-row {
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+.member-row:last-child {
+  border-bottom: none;
+}
+
+.member-active {
+  color: #2e8b57;
+  font-weight: bold;
+}
+
+.member-inactive {
+  color: #d9534f;
+  font-weight: bold;
+}
