@@ -1,4 +1,4 @@
-import "./Members.css";
+import "./members.css";
 
 function Members() {
   const members = [

@@ -1,4 +1,4 @@
-import "./FindLibrary.css";
+import "./findLibrary.css";
 
 function FindLibrary() {
   return (

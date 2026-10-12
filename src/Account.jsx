@@ -1,5 +1,5 @@
 
-import "./account.css";
+import "./Account.css";
 
 function Account() {
   return (

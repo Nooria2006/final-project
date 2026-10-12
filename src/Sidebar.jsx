@@ -1,5 +1,5 @@
 
-import "./sidebar.css";
+import "./Sidebar.css";
 
 function Sidebar({
   sidebarOpen,
