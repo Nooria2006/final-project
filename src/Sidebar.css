@@ -1,32 +1,38 @@
+
 /* =========================
    SIDEBAR
 ========================= */
 
 .sidebar {
   position: relative;
-
   flex-shrink: 0;
-
   width: 240px;
   height: 100vh;
-
   background: #39446d;
   color: white;
-
   padding: 25px 15px;
-
   box-sizing: border-box;
-
   overflow-y: auto;
   overflow-x: hidden;
-
   z-index: 1000;
 
   transition:
     width 0.3s ease,
-    padding 0.3s ease;
+    padding 0.3s ease,
+    transform 0.3s ease;
 }
 
+/* =========================
+   SIDEBAR HEADER
+========================= */
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 35px;
+}
 
 /* =========================
    LOGO
@@ -35,30 +41,48 @@
 .logo {
   display: flex;
   align-items: center;
-
   gap: 12px;
-
-  margin-bottom: 35px;
   padding: 0 10px;
-
   white-space: nowrap;
+  min-width: 0;
 }
 
 .logo-img {
   width: 40px;
   height: 40px;
-
   object-fit: contain;
-
   flex-shrink: 0;
 }
 
 .logo h3 {
   margin: 0;
-
   font-size: 20px;
 }
 
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-sidebar {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+.close-sidebar:hover {
+  opacity: 0.7;
+}
+
+.close-sidebar:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
 
 /* =========================
    NAVIGATION
@@ -67,39 +91,52 @@
 .sidebar nav {
   display: flex;
   flex-direction: column;
-
   gap: 7px;
 }
 
 .sidebar nav a {
   display: flex;
   align-items: center;
-
   gap: 14px;
-
   width: 100%;
-
   padding: 12px 15px;
 
   color: white;
-
   text-decoration: none;
-
   border-radius: 8px;
-
   font-size: 14px;
-
   box-sizing: border-box;
-
   white-space: nowrap;
 
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* Active navigation link */
+
+.sidebar nav a.active {
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 #ffffff;
+}
+
+.sidebar nav a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Keep navigation icons aligned */
+
+.sidebar nav a span:first-child {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
 
 /* =========================
    HELP
@@ -107,12 +144,10 @@
 
 .help {
   margin-top: 35px;
-
   padding: 15px;
 
   display: flex;
   align-items: center;
-
   gap: 12px;
 
   white-space: nowrap;
@@ -127,53 +162,75 @@
   align-items: center;
 
   border: 1px solid white;
-
   border-radius: 50%;
-
   flex-shrink: 0;
 }
 
-
 /* =========================
-   SIDEBAR CLOSED
+   DESKTOP: SIDEBAR CLOSED
 ========================= */
 
 .sidebar.closed {
   width: 0;
-
   padding-left: 0;
   padding-right: 0;
-
   overflow: hidden;
 }
 
-.sidebar.closed .logo,
+.sidebar.closed .sidebar-header,
 .sidebar.closed nav,
 .sidebar.closed .help {
   display: none;
 }
 
-
 /* =========================
-   MOBILE
+   MOBILE AND TABLET
 ========================= */
 
-@media (max-width: 750px) {
-
+@media (max-width: 768px) {
   .sidebar {
     position: fixed;
-
     top: 0;
     left: 0;
 
     width: 240px;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow-y: auto;
+    padding: 25px 15px;
+
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
   }
 
   .sidebar.closed {
     width: 240px;
-
     padding: 25px 15px;
-
     transform: translateX(-100%);
+    overflow-y: auto;
+  }
+
+  .sidebar.closed .sidebar-header,
+  .sidebar.closed nav,
+  .sidebar.closed .help {
+    display: none;
+  }
+
+  .sidebar-header {
+    margin-bottom: 35px;
+  }
+
+  .close-sidebar {
+    display: block;
   }
 }
+
+/* =========================
+   SMALL MOBILE
+========================= */

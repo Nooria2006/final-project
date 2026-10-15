@@ -1,6 +1,6 @@
+
 import { useState } from "react";
 import "./App.css";
-
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard";
 import Account from "./Account";
@@ -10,28 +10,37 @@ import DueBook from "./DueBook";
 import FindBook from "./findBook";
 import FindLibrary from "./findLibrary";
 import Categories from "./categories";
-import  FavoriteBook from "./favoriteBook";
+import FavoriteBook from "./favoriteBook";
 import Members from "./members";
 import Setting from "./Setting";
-
+import Auth from "./Auth";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState("dashboard");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setSidebarOpen((prev) => !prev);
   };
+  if (!isLoggedIn) {
+  return <Auth onLogin={() => setIsLoggedIn(true)} />;
+}
+
 
   return (
     <div className="app">
 
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        setCurrentPage={setCurrentPage}
-      />
+      {/* Sidebar */}
+<Sidebar
+  sidebarOpen={sidebarOpen}
+  setSidebarOpen={setSidebarOpen}
+  currentPage={currentPage}
+  setCurrentPage={setCurrentPage}
+/>
 
+
+      {/* Main Content */}
       <main
         className={
           sidebarOpen
@@ -40,6 +49,18 @@ function App() {
         }
       >
 
+        {/* Menu Button — available on every page */}
+        <button
+          type="button"
+          className="global-menu-toggle"
+          onClick={toggleSidebar}
+          aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+          aria-expanded={sidebarOpen}
+        >
+          {sidebarOpen ? "☰" : "☰"}
+        </button>
+
+        {/* Dashboard */}
         {currentPage === "dashboard" && (
           <Dashboard
             toggleSidebar={toggleSidebar}
@@ -48,6 +69,7 @@ function App() {
           />
         )}
 
+        {/* My Account */}
         {currentPage === "account" && (
           <Account
             toggleSidebar={toggleSidebar}
@@ -56,42 +78,42 @@ function App() {
           />
         )}
 
-        {currentPage === "books" && (
-          <BookCollection />
-        )}
-{currentPage === "borrowed" && (
-  <BorrowedBooks />
+      
+{currentPage === "books" && (
+  <BookCollection setCurrentPage={setCurrentPage} />
 )}
-{currentPage === "due" && (
-  <DueBook />
+{currentPage === "borrowed" && ( <BorrowedBooks setCurrentPage={setCurrentPage} />
 )}
-{currentPage === "findBook" && (
-  <FindBook />
-)}
-{currentPage === "findLibrary" && (
-  <FindLibrary />
-)}
-{currentPage === "categories" && (
-  <Categories />
-)}
-{currentPage === "members" && (
-  <Members />
-)}
-{currentPage === "members" && (
-  <Members />
+{currentPage === "findBook" && ( <FindBook setCurrentPage={setCurrentPage} />
 )}
 
-{currentPage === "favorite" && (
-  <FavoriteBook />
+
+
+        {/* Due Books */}
+        {currentPage === "due" && (<DueBook setCurrentPage={setCurrentPage} />)}
+
+        
+
+        {/* Find Library */}
+        {currentPage === "findLibrary" && (
+  <FindLibrary setCurrentPage={setCurrentPage} />
 )}
 
-{currentPage === "settings" && (
-  <Setting />
+        {/* Categories */}
+        {currentPage === "categories" && (
+  <Categories setCurrentPage={setCurrentPage} />
 )}
 
+        {/* Members */}
+        {currentPage === "members" && (<Members setCurrentPage={setCurrentPage} />)}
+
+        {/* Favorite Books */}
+        {currentPage === "favorite" && (<FavoriteBook setCurrentPage={setCurrentPage} />)}
+
+        {/* Settings */}
+        {currentPage === "settings" && (<Setting setCurrentPage={setCurrentPage} />)}
 
       </main>
-
     </div>
   );
 }

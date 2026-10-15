@@ -1,227 +1,297 @@
-import React from "react";
-import {
-  BookOpen,
-  Search,
-  Bell,
-  Settings,
-} from "lucide-react";
+
+import { useEffect, useState } from "react";
+import { Search, BookOpen, RefreshCw } from "lucide-react";
+import PageLayout from "./PageLayout";
 import "./BookCollection.css";
 
-// کتاب‌های نمونه
-const books = [
-  {
-    id: 1,
-    title: "The Alchemist",
-    category: "Fiction",
-    author: "Paulo Coelho",
-    year: "1988",
-    status: "Available",
-    image:
-      "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=500",
-  },
-  {
-    id: 2,
-    title: "Atomic Habits",
-    category: "Self-Help",
-    author: "James Clear",
-    year: "2018",
-    status: "Borrowed",
-    image:
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500",
-  },
-  {
-    id: 3,
-    title: "The Power of Now",
-    category: "Psychology",
-    author: "Eckhart Tolle",
-    year: "1997",
-    status: "Available",
-    image:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500",
-  },
-  {
-    id: 4,
-    title: "The Kite Runner",
-    category: "Drama",
-    author: "Khaled Hosseini",
-    year: "2003",
-    status: "Available",
-    image:
-      "https://images.unsplash.com/photo-1511108690759-009324a90311?w=500",
-  },
-];
+function BookCollection({ setCurrentPage }) {
+  const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [visibleCount, setVisibleCount] = useState(10);
 
-function BookCollection() {
+  async function fetchBooks(query = "fiction") {
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch(
+        `https://openlibrary.org/search.json?q=${encodeURIComponent(
+          query
+        )}&limit=40`
+      );
+
+      if (!response.ok) {
+        throw new Error("Unable to load books.");
+      }
+
+      const data = await response.json();
+
+      const formattedBooks = (data.docs || []).map((book, index) => ({
+        id: book.key || `book-${index}`,
+        title: book.title || "Untitled",
+        author: book.author_name?.[0] || "Unknown Author",
+        year: book.first_publish_year || "Unknown",
+        category: book.subject?.[0] || "General",
+        image: book.cover_i
+          ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+          : "",
+        status: "Available",
+      }));
+
+      setBooks(formattedBooks);
+    } catch {
+      setError(
+        "Books could not be loaded. Please check your internet connection and try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
+  const categories = [
+    "All",
+    ...new Set(books.map((book) => book.category)),
+  ];
+
+  const filteredBooks = books.filter((book) => {
+    const matchesSearch =
+      book.title.toLowerCase().includes(search.toLowerCase()) ||
+      book.author.toLowerCase().includes(search.toLowerCase());
+
+    const matchesCategory =
+      category === "All" || book.category === category;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  function handleSearch(event) {
+    event.preventDefault();
+
+    const query = search.trim();
+
+    if (query) {
+      fetchBooks(query);
+    } else {
+      fetchBooks();
+    }
+  }
+
   return (
-    <div className="book-page">
-
-      {/* Header */}
-      <header className="book-header">
-
-        <div>
-          <h2>Book Collection</h2>
-          <p>Search books and find what you need</p>
-        </div>
-
-        <div className="book-header-actions">
-
-          {/* Search */}
-          <div className="book-search">
-            <Search size={18} />
-            <input
-              type="text"
-              placeholder="Search books..."
-            />
+    <PageLayout
+      title="All Books"
+      description="Explore, search, and discover books in your library."
+      currentPage="books"
+      setCurrentPage={setCurrentPage}
+    >
+      <div className="book-page">
+        <section className="book-welcome">
+          <div className="book-welcome-icon">
+            <BookOpen size={30} />
           </div>
-
-          {/* Settings */}
-          <Settings size={20} />
-
-          {/* Notification */}
-          <div className="notification">
-            <Bell size={20} />
-            <span></span>
-          </div>
-
-        </div>
-      </header>
-
-      {/* Book Cards */}
-      <section className="book-section">
-
-        <h3>Popular Books</h3>
-
-        <div className="book-grid">
-
-          {books.map((book) => (
-            <div className="book-card" key={book.id}>
-
-              <div className="book-image">
-                <img
-                  src={book.image}
-                  alt={book.title}
-                />
-              </div>
-
-              <div className="book-card-content">
-
-                <div className="book-title-row">
-                  <h4>{book.title}</h4>
-
-                  <span className="book-category">
-                    {book.category}
-                  </span>
-                </div>
-
-                <p className="book-author">
-                  By {book.author}
-                </p>
-
-                <p className="book-description">
-                  Discover this book and explore its
-                  interesting ideas and stories.
-                </p>
-
-                <button className="view-book-btn">
-                  View Book
-                </button>
-
-              </div>
-
-            </div>
-          ))}
-
-        </div>
-
-      </section>
-
-      {/* Table */}
-      <section className="book-table-section">
-
-        <h3>All Books</h3>
-
-        <div className="table-controls">
 
           <div>
-            <select>
-              <option>7</option>
-              <option>10</option>
-              <option>20</option>
-            </select>
+            <h2>Discover Your Next Book</h2>
+            <p>
+              Explore books from different authors and subjects.
+            </p>
+          </div>
+        </section>
 
-            <span> entries per page</span>
+        <section className="book-toolbar">
+          <form className="book-search" onSubmit={handleSearch}>
+            <Search size={19} />
+
+            <input
+              type="search"
+              placeholder="Search by title or author..."
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              aria-label="Search books"
+            />
+
+            <button type="submit">Search</button>
+          </form>
+
+          <select
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            aria-label="Filter by category"
+          >
+            {categories.map((item) => (
+              <option key={item} value={item}>
+                {item === "All" ? "All Categories" : item}
+              </option>
+            ))}
+          </select>
+
+          <button
+            type="button"
+            className="book-refresh"
+            onClick={() => fetchBooks(search.trim() || "fiction")}
+            disabled={loading}
+          >
+            <RefreshCw size={17} />
+            Refresh
+          </button>
+        </section>
+
+        <section className="book-section">
+          <div className="book-section-heading">
+            <div>
+              <h2>Book Collection</h2>
+              <p>Find your favorite books and explore new ideas.</p>
+            </div>
+
+            <span className="book-count">
+              {filteredBooks.length} books
+            </span>
           </div>
 
-          <input
-            type="text"
-            placeholder="Search..."
-          />
+          {loading && (
+            <div className="book-message" role="status">
+              Loading books...
+            </div>
+          )}
 
-        </div>
+          {!loading && error && (
+            <div className="book-message book-error" role="alert">
+              <p>{error}</p>
 
-        <div className="table-container">
+              <button
+                type="button"
+                onClick={() => fetchBooks(search.trim() || "fiction")}
+              >
+                Try Again
+              </button>
+            </div>
+          )}
 
-          <table>
+          {!loading && !error && filteredBooks.length === 0 && (
+            <div className="book-message">
+              No books found. Try another title or author.
+            </div>
+          )}
 
-            <thead>
-              <tr>
-                <th>Book Name</th>
-                <th>Category</th>
-                <th>Author</th>
-                <th>Status</th>
-                <th>Year</th>
-                <th>ID</th>
-              </tr>
-            </thead>
+          {!loading && !error && filteredBooks.length > 0 && (
+            <>
+              <div className="book-grid">
+                {filteredBooks.slice(0, visibleCount).map((book) => (
+                  <article className="book-card" key={book.id}>
+                    <div className="book-image">
+                      {book.image ? (
+                        <img src={book.image} alt={book.title} />
+                      ) : (
+                        <div className="book-no-image">
+                          <BookOpen size={38} />
+                          <span>No cover available</span>
+                        </div>
+                      )}
+                    </div>
 
-            <tbody>
+                    <div className="book-card-content">
+                      <span className="book-category">
+                        {book.category}
+                      </span>
 
-              {books.map((book) => (
-                <tr key={book.id}>
+                      <h3>{book.title}</h3>
 
-                  <td className="table-book">
+                      <p className="book-author">
+                        By {book.author}
+                      </p>
 
-                    <img
-                      src={book.image}
-                      alt={book.title}
-                    />
+                      <p className="book-year">
+                        First published: {book.year}
+                      </p>
 
-                    <span>{book.title}</span>
+                      <a
+                        className="view-book-btn"
+                        href={`https://openlibrary.org${book.id}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View Book
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
 
-                  </td>
+              {visibleCount < filteredBooks.length && (
+                <div className="book-load-more">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setVisibleCount((count) => count + 10)
+                    }
+                  >
+                    Load More Books
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+        </section>
 
-                  <td>{book.category}</td>
+        {!loading && !error && filteredBooks.length > 0 && (
+          <section className="book-table-section">
+            <div className="book-section-heading">
+              <div>
+                <h2>All Books</h2>
+                <p>Browse book details in table format.</p>
+              </div>
+            </div>
 
-                  <td>{book.author}</td>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Book Name</th>
+                    <th>Category</th>
+                    <th>Author</th>
+                    <th>Status</th>
+                    <th>Year</th>
+                  </tr>
+                </thead>
 
-                  <td>
-                    <span
-                      className={
-                        book.status === "Available"
-                          ? "status available"
-                          : "status borrowed"
-                      }
-                    >
-                      {book.status}
-                    </span>
-                  </td>
+                <tbody>
+                  {filteredBooks.slice(0, visibleCount).map((book) => (
+                    <tr key={book.id}>
+                      <td className="table-book">
+                        {book.image ? (
+                          <img src={book.image} alt="" />
+                        ) : (
+                          <BookOpen size={22} />
+                        )}
 
-                  <td>{book.year}</td>
+                        <span>{book.title}</span>
+                      </td>
 
-                  <td>LIB-{book.id}001</td>
+                      <td>{book.category}</td>
+                      <td>{book.author}</td>
 
-                </tr>
-              ))}
+                      <td>
+                        <span className="status available">
+                          {book.status}
+                        </span>
+                      </td>
 
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </section>
-
-    </div>
+                      <td>{book.year}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+      </div>
+    </PageLayout>
   );
 }
 

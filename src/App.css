@@ -1,17 +1,20 @@
+
 /* =========================
-   APP
+   APP LAYOUT
 ========================= */
+
+* {
+  box-sizing: border-box;
+}
 
 .app {
   display: flex;
-
   width: 100%;
   min-height: 100vh;
-
   margin: 0;
   padding: 0;
+  background: #f5f6fa;
 }
-
 
 /* =========================
    MAIN CONTENT
@@ -19,41 +22,114 @@
 
 .app-content {
   flex: 1;
-
-  width: auto;
+  width: 0;
   min-width: 0;
   min-height: 100vh;
-
-  margin-left: 0;
-
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-
-  transition: 0.3s ease;
+  transition: width 0.3s ease;
 }
 
+/* Sidebar open */
 
-/* =========================
-   SIDEBAR CLOSED
-========================= */
+.app-content.sidebar-is-open {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Sidebar closed */
 
 .app-content.sidebar-is-closed {
-  width: auto;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
 }
 
-
 /* =========================
-   MOBILE
+   GLOBAL MENU BUTTON
 ========================= */
 
-@media (max-width: 750px) {
+.global-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+  margin: 10px;
+
+  background: #39446d;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 25px;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1100;
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.global-menu-toggle:hover {
+  background: #283253;
+}
+
+.global-menu-toggle:active {
+  transform: scale(0.96);
+}
+
+.global-menu-toggle:focus-visible {
+  outline: 3px solid #8ba7ff;
+  outline-offset: 3px;
+}
+
+/* =========================
+   MOBILE LAYOUT
+========================= */
+
+@media (max-width: 768px) {
   .app {
     display: block;
+    width: 100%;
+    min-height: 100vh;
   }
 
   .app-content,
+  .app-content.sidebar-is-open,
   .app-content.sidebar-is-closed {
+    display: block;
     width: 100%;
-    margin-left: 0;
+    min-width: 0;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .global-menu-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    z-index: 1200;
+  }
+}
+
+/* =========================
+   SMALL MOBILE SCREENS
+========================= */
+
+@media (max-width: 400px) {
+  .global-menu-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
   }
 }

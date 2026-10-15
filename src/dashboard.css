@@ -1,3 +1,4 @@
+
 /* =========================
    MAIN DASHBOARD
 ========================= */
@@ -5,14 +6,11 @@
 .main {
   width: 100%;
   min-height: 100vh;
-
+  min-width: 0;
   background: #f5f6fa;
-
-  box-sizing: border-box;
-
+  color: #303030;
   overflow-x: hidden;
 }
-
 
 /* =========================
    HEADER
@@ -21,20 +19,14 @@
 .dashboard-header {
   width: 100%;
   min-height: 80px;
-
-  background: white;
-
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  gap: 20px;
   padding: 15px 30px;
-
   border-bottom: 1px solid #e5e5e5;
-
-  box-sizing: border-box;
 }
-
 
 /* =========================
    HEADER LEFT
@@ -43,48 +35,29 @@
 .header-left {
   display: flex;
   align-items: center;
-
   gap: 15px;
-
   min-width: 0;
 }
 
-
-/* =========================
-   MENU BUTTON
-========================= */
-
-.menu-button {
-  border: none;
-
-  background: transparent;
-
-  font-size: 24px;
-
-  cursor: pointer;
-
-  padding: 5px 8px;
-
-  flex-shrink: 0;
-}
-
-.menu-button:hover {
-  opacity: 0.7;
-}
-
-
-/* =========================
-   HEADER TEXT
-========================= */
-
 .header-left small {
-  color: #777;
+  color: #777777;
+  font-size: 12px;
 }
 
 .header-left h3 {
   margin: 5px 0 0;
+  color: #39446d;
+  font-size: 20px;
 }
 
+/* =========================
+   OLD MENU BUTTON
+========================= */
+
+/* The menu button is now handled by App.jsx. */
+.menu-button {
+  display: none;
+}
 
 /* =========================
    HEADER RIGHT
@@ -93,10 +66,10 @@
 .header-right {
   display: flex;
   align-items: center;
-
-  gap: 20px;
+  justify-content: flex-end;
+  gap: 15px;
+  min-width: 0;
 }
-
 
 /* =========================
    SEARCH
@@ -105,93 +78,114 @@
 .search {
   display: flex;
   align-items: center;
-
   gap: 8px;
-
-  background: #f5f6fa;
-
+  min-width: 0;
   padding: 10px 15px;
-
+  background: #f5f6fa;
+  border: 1px solid transparent;
   border-radius: 8px;
 }
 
-.search input {
-  width: 220px;
-
-  border: none;
-
-  outline: none;
-
-  background: transparent;
+.search:focus-within {
+  border-color: #9ca8d1;
 }
 
+.search input {
+  width: 200px;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #303030;
+  font-size: 14px;
+}
+
+.search input::placeholder {
+  color: #888888;
+}
 
 /* =========================
-   ACCOUNT
+   ACCOUNT BUTTON
 ========================= */
 
 .account {
   border: none;
-
   background: transparent;
-
-  color: #333;
-
+  color: #333333;
   font-size: 14px;
-
   cursor: pointer;
-
-  padding: 5px;
+  padding: 9px 12px;
+  border-radius: 7px;
+  white-space: nowrap;
 }
 
 .account:hover {
-  opacity: 0.7;
+  background: #f0f1f7;
 }
 
+.account:focus-visible {
+  outline: 2px solid #8ba7ff;
+  outline-offset: 3px;
+}
 
 /* =========================
-   CONTENT
+   NOTIFICATIONS
+========================= */
+
+.notification {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* =========================
+   MAIN CONTENT
 ========================= */
 
 .content {
+  width: 100%;
   padding: 30px;
-
-  box-sizing: border-box;
 }
 
 .content > h1 {
   margin: 0 0 30px;
-
   color: #303030;
+  font-size: 28px;
+  line-height: 1.4;
 }
-
 
 /* =========================
    FIND SECTION
 ========================= */
 
 .find-section {
-  background: white;
-
+  width: 100%;
   padding: 25px;
-
-  border-radius: 12px;
-
   margin-bottom: 30px;
-
-  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ececf2;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
 }
 
 .find-section h2 {
   margin: 0 0 8px;
+  color: #39446d;
+  font-size: 21px;
 }
 
 .find-section p {
-  color: #777;
-
-  margin-bottom: 20px;
+  margin: 0 0 20px;
+  color: #777777;
+  line-height: 1.6;
 }
-
 
 /* =========================
    FIND BOX
@@ -199,407 +193,397 @@
 
 .find-box {
   display: flex;
-
+  align-items: stretch;
   gap: 10px;
+  width: 100%;
 }
 
 .find-box input {
   flex: 1;
-
   min-width: 0;
-
-  padding: 12px;
-
-  border: 1px solid #ddd;
-
+  padding: 12px 14px;
+  border: 1px solid #dddddd;
   border-radius: 7px;
-
   outline: none;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.find-box input:focus {
+  border-color: #39446d;
+  box-shadow: 0 0 0 3px rgba(57, 68, 109, 0.1);
 }
 
 .find-box button {
   padding: 12px 20px;
-
   border: none;
-
   border-radius: 7px;
-
   background: #39446d;
-
-  color: white;
-
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
+.find-box button:hover {
+  background: #283253;
+}
 
 /* =========================
-   CARDS
+   DASHBOARD CARDS
 ========================= */
 
 .cards {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 25px;
+  width: 100%;
 }
 
 .card {
-  background: white;
-
-  padding: 25px;
-
-  border-radius: 12px;
-
-  border: 1px solid #e8e8e8;
-
-  box-sizing: border-box;
-
   min-width: 0;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
 }
 
 .card h3 {
   margin: 0 0 25px;
+  color: #39446d;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
-
 /* =========================
-   LIST
+   CATEGORY AND BOOK LISTS
 ========================= */
 
 .list p,
 .book-list p {
   display: flex;
-
-  justify-content: space-between;
-
   align-items: center;
-
-  gap: 15px;
-
+  justify-content: space-between;
+  gap: 12px;
   margin: 15px 0;
-
-  color: #555;
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .list span,
 .book-list span {
-  font-weight: bold;
-
-  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: #39446d;
 }
 
-
 /* =========================
-   DONUT CHART
+   DONUT CHARTS
 ========================= */
 
 .chart-row {
   display: flex;
-
   align-items: center;
-
-  gap: 30px;
+  gap: 25px;
+  min-width: 0;
 }
 
 .donut {
-  width: 140px;
-  height: 140px;
-
-  min-width: 140px;
-
-  border-radius: 50%;
-
   display: flex;
-
-  justify-content: center;
-
   align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  min-width: 130px;
+  border-radius: 50%;
 }
 
 .donut1 {
   background: conic-gradient(
-    #39446d 35%,
+    #39446d 0% 35%,
     #6976a5 35% 55%,
     #9ca5c7 55% 70%,
     #c5cadc 70% 88%,
-    #e3e5ed 88%
+    #e3e5ed 88% 100%
   );
 }
 
 .donut2 {
   background: conic-gradient(
-    #39446d 45%,
+    #39446d 0% 45%,
     #6976a5 45% 70%,
     #9ca5c7 70% 85%,
-    #e3e5ed 85%
+    #e3e5ed 85% 100%
   );
 }
 
 .donut div {
-  width: 80px;
-  height: 80px;
-
-  background: white;
-
+  width: 76px;
+  height: 76px;
+  background: #ffffff;
   border-radius: 50%;
 }
 
-
 /* =========================
-   CARD BUTTON
+   CARD BUTTONS
 ========================= */
 
 .card > button {
   margin-top: 20px;
-
   padding: 10px 15px;
-
   border: none;
-
   border-radius: 6px;
-
   background: #39446d;
-
-  color: white;
-
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
+.card > button:hover {
+  background: #283253;
+}
 
 /* =========================
-   READING
+   READING STATISTICS
 ========================= */
 
 .reading h2 {
-  font-size: 35px;
-
   margin: 0 0 5px;
+  color: #39446d;
+  font-size: 35px;
 }
 
 .reading h2 span {
-  font-size: 14px;
-
-  color: green;
-
   margin-left: 10px;
+  color: #24834a;
+  font-size: 14px;
 }
 
 .subtitle {
-  color: #777;
+  color: #777777;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
 
 /* =========================
    LINE CHART
 ========================= */
 
 .line-chart {
-  margin-top: 20px;
-
   width: 100%;
-
+  margin-top: 20px;
   overflow: hidden;
 }
 
 .line-chart svg {
-  width: 100%;
-
-  height: 180px;
-
   display: block;
+  width: 100%;
+  height: 180px;
 }
 
-
 /* =========================
-   BOOKS
+   RECENT BOOKS
 ========================= */
 
 .books-section {
+  width: 100%;
   margin-top: 35px;
 }
 
 .books-section h2 {
-  margin-bottom: 20px;
+  margin: 0 0 20px;
+  color: #39446d;
+  font-size: 22px;
 }
 
 .books {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
 .book {
-  background: white;
-
-  padding: 20px;
-
-  border-radius: 12px;
-
-  text-align: center;
-
-  box-sizing: border-box;
-
   min-width: 0;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  text-align: center;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.book:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .cover {
-  width: 100%;
-
-  height: 130px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
-  font-size: 60px;
-
+  width: 100%;
+  height: 130px;
   margin-bottom: 20px;
+  font-size: 60px;
 }
 
 .book h3 {
   margin: 0 0 10px;
-
-  line-height: 1.4;
+  color: #39446d;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .book p {
   margin: 0;
-
-  color: #777;
-
+  color: #777777;
+  font-size: 14px;
   line-height: 1.5;
 }
-
 
 /* =========================
    FOOTER
 ========================= */
 
 .footer {
-  margin-top: 40px;
-
-  padding: 25px 30px;
-
-  background: white;
-
   display: flex;
-
-  justify-content: space-between;
-
   align-items: center;
-
-  color: #777;
-
-  box-sizing: border-box;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+  padding: 25px 30px;
+  background: #ffffff;
+  color: #777777;
+  border-top: 1px solid #e8e8e8;
 }
 
 .footer p {
   margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .footer-links {
   display: flex;
-
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .footer-links a {
-  color: #777;
-
+  color: #777777;
   text-decoration: none;
+  font-size: 13px;
 }
 
+.footer-links a:hover {
+  color: #39446d;
+}
 
 /* =========================
-   TABLET
+   MEDIUM DESKTOP AND TABLET
 ========================= */
 
 @media (max-width: 1100px) {
+  .dashboard-header {
+    padding: 15px 20px;
+  }
 
   .header-right {
-    gap: 12px;
+    gap: 10px;
   }
 
   .search input {
-    width: 150px;
+    width: 145px;
   }
 
   .chart-row {
-    flex-direction: column;
+    gap: 18px;
+  }
 
-    align-items: flex-start;
+  .donut {
+    width: 110px;
+    height: 110px;
+    min-width: 110px;
+  }
+
+  .donut div {
+    width: 65px;
+    height: 65px;
   }
 
   .books {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
 
 /* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 750px) {
-
-  .main {
-    width: 100%;
-  }
-
   .dashboard-header {
+    min-height: 75px;
     padding: 15px 20px;
+    gap: 10px;
   }
 
   .header-right {
-    gap: 12px;
+    gap: 8px;
   }
 
   .search {
     display: none;
   }
 
-  .account {
-    font-size: 13px;
-  }
-
   .content {
     padding: 20px;
   }
 
+  .content > h1 {
+    font-size: 25px;
+  }
+
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
   }
 
   .books {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    padding: 20px;
   }
 
   .footer {
     flex-direction: column;
-
-    gap: 15px;
-
     text-align: center;
+    padding: 22px 20px;
+  }
+
+  .footer-links {
+    justify-content: center;
   }
 }
-
 
 /* =========================
    SMALL MOBILE
 ========================= */
 
 @media (max-width: 500px) {
-
   .dashboard-header {
-    align-items: flex-start;
+    align-items: center;
+    padding: 15px;
   }
 
   .header-left h3 {
@@ -614,29 +598,82 @@
     display: none;
   }
 
+  .content {
+    padding: 15px;
+  }
+
   .content > h1 {
-    font-size: 24px;
+    font-size: 23px;
+    margin-bottom: 22px;
+  }
+
+  .find-section {
+    padding: 18px;
+  }
+
+  .find-section h2 {
+    font-size: 19px;
   }
 
   .find-box {
     flex-direction: column;
   }
 
+  .find-box input,
   .find-box button {
     width: 100%;
+    min-height: 44px;
   }
 
   .chart-row {
+    flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
 
   .list {
     width: 100%;
   }
 
-  .footer-links {
-    flex-wrap: wrap;
+  .books {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-    justify-content: center;
+  .book {
+    padding: 18px;
+  }
+
+  .cover {
+    height: 110px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+}
+
+/* =========================
+   EXTRA SMALL SCREENS
+========================= */
+
+@media (max-width: 350px) {
+  .dashboard-header {
+    padding: 12px;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .find-section {
+    padding: 15px;
+  }
+
+  .reading h2 {
+    font-size: 30px;
   }
 }
