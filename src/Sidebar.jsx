@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import logo from "./Image-Logo.jpeg";
+import logo from "./Image-logo.jpeg";
 
 function Sidebar({
 sidebarOpen,
